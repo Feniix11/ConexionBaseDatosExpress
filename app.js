@@ -10,23 +10,23 @@ app.get("/users", (req, res) => {
   res.json(users);
 });
 
-app.post("/create", (req, res) => {
-  console.log(req);
-  // Guardo las propiedades que sé que llegaran
-  const { id, name } = req.body;
+// app.post("/create", (req, res) => {
+//   console.log(req);
+//   // Guardo las propiedades que sé que llegaran
+//   const { id, name } = req.body;
 
-  // Verficio que lleguen
-  console.log("id: " + id);
+//   // Verficio que lleguen
+//   console.log("id: " + id);
 
-  // Los guardo en un objeto
-  const respuesta = { id: id, name: name };
+//   // Los guardo en un objeto
+//   const respuesta = { id: id, name: name };
 
-  // Agrego mi respuesta a los usuarios existentes
-  users.push(respuesta);
+//   // Agrego mi respuesta a los usuarios existentes
+//   users.push(respuesta);
 
-  // Confirmo la operacion
-  res.json({ ok: true });
-});
+//   // Confirmo la operacion
+//   res.json({ ok: true });
+// });
 
 app.post("/create/fs", (req, res) => {
   // Guardo las propiedades que sé que llegaran
