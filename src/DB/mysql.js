@@ -34,17 +34,22 @@ conMysql();
 
 function todos(tabla) {
   return new Promise((resolve, reject) => {
-    connection.query(`SELECT * FROM ${tabla}`, (err, resultado) => {
-      if (err) {
-        return reject(err);
-      } else {
-        resolve(resultado);
-      }
+    connection.query(`SELECT * FROM ${tabla}`, (error, resultado) => {
+      return error ? reject(error) : resolve(resultado);
     });
   });
 }
 
-function uno(tabla, id) {}
+function uno(tabla, id) {
+  return new Promise((resolve, reject) => {
+    connection.query(
+      `SELECT * FROM ${tabla} WHERE id=${id}`,
+      (error, resultado) => {
+        return error ? reject(error) : resolve(resultado);
+      }
+    );
+  });
+}
 
 function agregar(tabla, data) {}
 

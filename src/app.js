@@ -1,14 +1,19 @@
 const express = require("express");
+const morgan = require("morgan");
 const app = express();
 const config = require("./config");
-const users = require("./routes/usuarios");
+const users = require("./routes/rutas");
 // const fs = require("fs");
 
 // app.use(express.json());
 
-// configuracion
+// MIDDLEWARE
+app.use(morgan("dev"));
+
+// CONFIGURACION
 app.set("port", config.app.port);
 
+// RUTAS
 app.use("/users", users);
 
 module.exports = app;
