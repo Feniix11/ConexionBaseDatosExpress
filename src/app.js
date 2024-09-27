@@ -31,6 +31,7 @@ app.use("/clientes", clientes);
 app.use("/usuarios", usuarios);
 
 app.use(errors);
+
 module.exports = app;
 
 // app.post("/create", (req, res) => {
