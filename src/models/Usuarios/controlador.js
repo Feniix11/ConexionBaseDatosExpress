@@ -7,6 +7,7 @@ module.exports = function (dbInyectada) {
   if (!db) {
     db = require("../DB/mysql");
   }
+
   function todos() {
     return db.todos(USUARIOS);
   }
