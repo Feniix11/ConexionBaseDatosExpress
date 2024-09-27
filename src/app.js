@@ -4,6 +4,7 @@ const app = express();
 const cors = require("cors");
 const config = require("./config");
 
+const auth = require("./models/Auth/rutas");
 const clientes = require("./models/Clientes/rutas");
 const usuarios = require("./models/Usuarios/rutas");
 
@@ -25,6 +26,7 @@ app.use(cors(corsOptions));
 app.set("port", config.app.port);
 
 // RUTAS
+app.use("/authenticar", auth);
 app.use("/clientes", clientes);
 app.use("/usuarios", usuarios);
 
