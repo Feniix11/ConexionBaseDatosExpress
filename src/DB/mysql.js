@@ -56,9 +56,7 @@ function agregar(tabla, data) {
     let query = connection.query(
       `INSERT INTO ${tabla} SET ? ON DUPLICATE KEY UPDATE ?`,
       [data, data],
-
       (error, resultado) => {
-        console.log(resultado);
         return error ? reject(error) : resolve(resultado);
       }
     );

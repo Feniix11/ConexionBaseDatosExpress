@@ -1,5 +1,5 @@
 const USUARIOS = "Usuarios";
-const auth = require("../models/Auth");
+const auth = require("../Auth");
 
 module.exports = function (dbInyectada) {
   let db = dbInyectada;

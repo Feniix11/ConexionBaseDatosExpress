@@ -1,57 +1,28 @@
-const Auth = "Auth";
-
+const AUTH = "Auth";
 module.exports = function (dbInyectada) {
   let db = dbInyectada;
 
   if (!db) {
-    db = require("../DB/mysql");
-  }
-  function todos() {
-    return db.todos(USUARIOS);
+    db = require("../../DB/mysql");
   }
 
-  function uno(id) {
-    return db.uno(USUARIOS, id);
-  }
-
-  async function agregar(body) {
-    const usuario = {
-      id: body.id,
-      nombre: body.nombre,
-      activo: body.activo,
+  function agregar(data) {
+    const authData = {
+      id: data.id,
     };
-    const respuesta = await db.agregar(USUARIOS, usuario);
 
-    var insertId = "";
-
-    console.log(respuesta.insertId);
-    if (!body.id) {
-      insertId = respuesta.insertId;
-    } else {
-      insertId = body.id;
+    if (data.usuario) {
+      authData.usuario = data.usuario;
     }
 
-    let respuesta2 = "";
-
-    if (body.usuario || body.password) {
-      respuesta2 = await auth.agregar({
-        id: respuesta.insertId,
-        usuario: body.usuario,
-        password: body.password,
-      });
+    if (data.password) {
+      authData.password = data.password;
     }
 
-    return respuesta2;
-  }
-
-  function eliminar(body) {
-    return db.eliminar(USUARIOS, body);
+    return db.agregar(AUTH, authData);
   }
 
   return {
-    todos,
-    uno,
     agregar,
-    eliminar,
   };
 };
