@@ -1,23 +1,24 @@
 const express = require("express");
 const respuesta = require("../../red/respuesta");
-const controlador = require("./index");
+// const index = require("./index");
+const controlador = require("./controlador");
 const seguridad = require("./seguridad");
 
 const router = express.Router();
 
-router.get("/", todos);
+router.get("/", controlador.todos);
 router.get("/:id", uno);
 router.post("/create", seguridad(), agregar);
 router.put("/", seguridad(), eliminar);
 
-async function todos(req, res, next) {
-  try {
-    const items = await controlador.todos();
-    respuesta.success(req, res, items, 200);
-  } catch (error) {
-    next(error);
-  }
-}
+// async function todos(req, res, next) {
+//   try {
+//     const items = await index.todos();
+//     respuesta.success(req, res, items, 200);
+//   } catch (error) {
+//     next(error);
+//   }
+// }
 
 async function uno(req, res, next) {
   try {

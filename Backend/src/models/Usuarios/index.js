@@ -1,4 +1,4 @@
 const db = require("../../DB/mysql");
-const controlador = require("./controlador");
+const servicios = require("./servicios");
 
-module.exports = controlador(db);
+module.exports = servicios(db);
